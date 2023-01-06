@@ -25,7 +25,8 @@ class PlayerModal {
         this.$wrapper
             .querySelector('.prev-btn')
             .addEventListener('click', () => {                              
-                console.log([this.Medias.$Medias].findIndex(item => item === this._media));
+                console.log(this.Medias.$Medias);
+                console.log(this.media.view);
             });
     }
 
@@ -33,7 +34,13 @@ class PlayerModal {
         this.$wrapper
             .querySelector('.next-btn')
             .addEventListener('click', () => {
-                const currentIndex = [this.Medias.$Medias].findIndex(item => item === this.media); 
+                console.log('current', this.media.view);
+                console.log('uris', this.Medias.$Medias);
+                console.log('uris[0]', this.Medias.$Medias[0]);
+                const currentIndex = this.Medias.$Medias.findIndex(item => item === this.media.view);
+                console.log('currentIndex suivant', currentIndex + 1);
+                console.log('uris[currentIndex + 1]', this.Medias.$Medias[currentIndex + 1]);
+                // this.media.view = this.Medias.$Medias[currentIndex + 1];
                 console.log(currentIndex);
             });
     }

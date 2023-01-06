@@ -38,7 +38,7 @@ class PhotograperApp {
             .map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {
                 if(media.photographerId === this.idPhotographer) {
-                    this.$Medias.push(media);
+                    this.$Medias.push(media.view);
                     const Template = mediaCardWithPlayer(new MediaCard(media));
                     this.$mediasWrapper.appendChild(
                         Template.createMediaCard()

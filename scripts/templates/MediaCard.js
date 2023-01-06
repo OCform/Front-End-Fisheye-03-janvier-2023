@@ -43,7 +43,6 @@ class MediaCard {
             
             this.$wrapper.innerHTML = mediaCard;
         }
-        
         return (this.$wrapper);
     }
 }
