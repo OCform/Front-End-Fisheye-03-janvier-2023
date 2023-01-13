@@ -153,59 +153,82 @@ h1 {
 
 .player img,
 .player video {
-    width: 900px;
-    height: 700px;
-    object-fit: contain;
+    width: 1050px;
+    height: 900px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 4px 5px 5px #333;
+}
+.player h3 {
+    color: #901C1C;
+    font-size: 30px;
+    font-weight: 200;
 }
 
-.close-btn {
+.close-btn {    
     position: absolute;
-    bottom: -40px;
-    left: 50%;
+    bottom: 100%;
+    top: -50px;
+    left: 1075px;
+    right: -50px;
     transform: translateX(-50%);
-    background-color: #333;
-    color: #eee;
-    border: 1px solid #333;
+    background-color: transparent;
+    color: #901C1C;
+    border: 1px solid transparent;
     border-radius: 8px;
-    height: 36px;
-    width: 200px;
+    height: 50px;
+    width: 50px;        
     transition: .4s;
     cursor: pointer;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    font-size: 60px;    
+    padding: 8px;
 }
 
 .prev-btn {
-    position: absolute;
-    bottom: -40px;
-    left: 0%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #eee;
-    border: 1px solid #333;
+    position: fixed;
+    bottom: 50%;
+    top: 50%;
+    left: -50px;
+    right: 100%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #901C1C;
+    border: 1px solid transparent;
     border-radius: 8px;
-    height: 36px;
-    width: 200px;
+    height: 50px;
+    width: 50px;
     transition: .4s;
     cursor: pointer;
+    font-size: 30px;
+    padding-bottom: 6px;
 }
 
-.next-btn {
-    position: absolute;
-    bottom: -40px;
+.next-btn {    
+    position: fixed;
+    bottom: 50%;
+    top: 50%;
     left: 100%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #eee;
-    border: 1px solid #333;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #901C1C;
+    border: 1px solid transparent;
     border-radius: 8px;
-    height: 36px;
-    width: 200px;
+    height: 50px;
+    width: 50px;
     transition: .4s;
     cursor: pointer;
+    font-size: 30px;
+    padding-bottom: 6px;
 }
 
 .close-btn:hover, 
 .prev-btn:hover, 
 .next-btn:hover  {
-    background-color: #eee;
-    color: #333;
+    background-color: #901C1C;
+    border: 1px solid #901C1C;
+    color: #FFF;
 }

@@ -9,7 +9,7 @@ class MediaCard {
         if(this._media.type === 'image') {
             const mediaCard = `
                 <div class="media center">
-                    <img
+                    <img class="display" id="${this._media.id}"
                         alt="${this._media.title}"
                         src="${this._media.view}"
                     />
@@ -27,7 +27,7 @@ class MediaCard {
         } else {
             const mediaCard = `            
                 <div class="media center">
-                    <video
+                    <video class="display" id="${this._media.id}"
                         alt="${this._media.title}"
                         src="${this._media.view}"
                     ></video>

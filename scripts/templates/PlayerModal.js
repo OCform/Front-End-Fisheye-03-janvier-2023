@@ -1,14 +1,31 @@
 class PlayerModal {
     constructor(media) {
-        this.media = media;
+        this._media = media;
 
         this.$wrapper = document.createElement('div');
         this.$wrapper.classList.add('player-wrapper');
 
-        this.$modalWrapper = document.querySelector('.modal'); 
+        this.$modalWrapper = document.querySelector('.modal');
 
-        this.Medias = new PhotograperApp();
-        this.Medias.main();
+        this.$media = document.querySelectorAll(".medias-wrapper > .media-card-wrapper > .media.center > .display");
+        this.currentIndex= 1;
+        this.mediaSrc = [];
+    }
+
+    onSrc() {
+        // get medias src
+        this.$media.forEach((med, i) => {
+            let type = med.tagName === 'IMG' ? 'image' : 'video';         
+            let id = parseInt(med.getAttribute('id')); 
+            let view = med.getAttribute('src');  
+            let title = med.getAttribute('alt');
+            
+            this.mediaSrc.push({type:type, id:id, view:view, title:title});
+            
+            if(this.mediaSrc.length > this.$media.length) {
+                this.mediaSrc.pop();
+            }
+        });        
     }
 
     onCloseButton() {
@@ -21,12 +38,14 @@ class PlayerModal {
             });
     }
 
-    onPrevButton() {        
+    onPrevButton() {
         this.$wrapper
             .querySelector('.prev-btn')
-            .addEventListener('click', () => {                              
-                console.log(this.Medias.$Medias);
-                console.log(this.media.view);
+            .addEventListener('click', () => {
+                this.currentIndex = this.mediaSrc.findIndex(item => item.id === this._media.id);
+                if(this.currentIndex <= 0) {this.currentIndex = this.mediaSrc.length;}
+                this._media = this.mediaSrc[this.currentIndex - 1];                 
+                this.render();
             });
     }
 
@@ -34,47 +53,38 @@ class PlayerModal {
         this.$wrapper
             .querySelector('.next-btn')
             .addEventListener('click', () => {
-                console.log('current', this.media.view);
-                console.log('uris', this.Medias.$Medias);
-                console.log('uris[0]', this.Medias.$Medias[0]);
-                const currentIndex = this.Medias.$Medias.findIndex(item => item === this.media.view);
-                console.log('currentIndex suivant', currentIndex + 1);
-                console.log('uris[currentIndex + 1]', this.Medias.$Medias[currentIndex + 1]);
-                // this.media.view = this.Medias.$Medias[currentIndex + 1];
-                console.log(currentIndex);
+                this.currentIndex = this.mediaSrc.findIndex(item => (item.id === this._media.id));
+                if(this.currentIndex >= this.mediaSrc.length-1) {this.currentIndex = -1;}
+                this._media = this.mediaSrc[this.currentIndex + 1]; 
+                this.render();              
             });
     }
 
     createPlayer() {
         let player;        
-        if(this.media.type === 'image') {
+        if(this._media.type === 'image') {
             player = `
                 <div class="player">                                     
                     <img
-                        src="${this.media.view}"
-                        alt="${this.media.title}"                        
+                        src="${this._media.view}"
+                        alt="${this._media.title}"                        
                     />
-                    <h3>${this.media.title}</h3>
-                    <button class="close-btn">Fermer</button>
-                    <button class="prev-btn">Precedent</button>
-                    <button class="next-btn">Suivant</button>                    
+                    <h3>${this._media.title}</h3>
+                    <button class="close-btn">&times;</button>
+                    <button class="prev-btn">&#10094;</button>
+                    <button class="next-btn">&#10095;</button>                    
                 </div>
             `;
         } else {
             player = `
-                <div class="player">                    
+                <div class="player"> 
                     <video controls>
-                        <source 
-                            src="${this.media.view}"  
-                            type="video/mp4">                                                        
-                        </source>
-                        C'est la vidéo titrée ${this.media.title}. 
-                        La \source n'est pas disponible ou votre navigateur ne supporte pas la balise video !
-                    </video>
-                    <h3>${this.media.title}</h3>
-                    <button class="close-btn">Fermer la fenêtre</button>
-                    <button class="prev-btn">Precedent</button>
-                    <button class="next-btn">Suivant</button>                   
+                        <source src="${this._media.view}">                        
+                    </video> 
+                    <h3>${this._media.title}</h3>
+                    <button class="close-btn">&times;</button>
+                    <button class="prev-btn">&#10094;</button>
+                    <button class="next-btn">&#10095;</button>                   
                 </div>
             `;
         }
@@ -84,6 +94,7 @@ class PlayerModal {
         this.$modalWrapper.classList.add('modal-on');
         this.$modalWrapper.appendChild(this.$wrapper);
 
+        this.onSrc();
         this.onCloseButton();
         this.onPrevButton();
         this.onNextButton();
