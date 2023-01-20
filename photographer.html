@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&amp;display=swap" rel="stylesheet">
     <link href="css/photographer.css" rel="stylesheet" type="text/css">
     <title>Fisheye - photographe </title>
-  </head>
-  <source>
+  </head>  
     <header>
       <a href="/index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
@@ -20,10 +19,16 @@
     </div>
     <main>
       <div class="photographer-header"></div>
-      <div class="medias-wrapper"></div>
+      <div class="medias-wrapper">
+        <div class="cartouche"></div>
+      </div>
     </main>
+    
     <div class="modal"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js" integrity="sha512-rpLlll167T5LJHwp0waJCh3ZRf7pO6IT1+LZOhAyP6phAirwchClbTZV3iqL3BMrVxIYRbzGTpli4rfxsCK6Vw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Lib -->
+  <script src="/lib/sorter/index.js"></script>
 
   <!-- Factories -->
   <script src="/scripts/factories/PhotographerFactory.js"></script>
@@ -34,9 +39,14 @@
   <!-- Templates -->
   <script src="/scripts/templates/MediaCard.js"></script>
   <script src="/scripts/templates/PlayerModal.js"></script>
+  <script src="/scripts/templates/SorterForm.js"></script>
   
   <!-- Decorators -->
   <script src="/scripts/decorators/mediaCardWithPlayer.js"></script>
+
+  <!-- Pub/Sub -->
+  <!-- <script src="/scripts/wishlist/Subject.js"></script>
+  <script src="/scripts/wishlist/Counter.js"></script> -->
 
   <!-- Entry point -->
   <script src="/scripts/pages/PhotograperApp.js"></script>

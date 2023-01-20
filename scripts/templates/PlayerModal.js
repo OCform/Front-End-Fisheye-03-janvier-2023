@@ -17,8 +17,15 @@ class PlayerModal {
         this.$media.forEach((med, i) => {
             let type = med.tagName === 'IMG' ? 'image' : 'video';         
             let id = parseInt(med.getAttribute('id')); 
-            let view = med.getAttribute('src');  
-            let title = med.getAttribute('alt');
+            let view = med.getAttribute('src');
+            let title;
+            if(med.tagName === 'IMG') {
+                title = med.getAttribute('alt');
+            } else if(med.tagName === 'VIDEO') {
+                title = med.getAttribute('title');
+            } else {
+                title = '';
+            }
             
             this.mediaSrc.push({type:type, id:id, view:view, title:title});
             
@@ -61,34 +68,39 @@ class PlayerModal {
     }
 
     createPlayer() {
-        let player;        
+        console.log(this.mediaSrc.filter(item => (this._media.id === item.id)));
+        
+        let player;
+                
         if(this._media.type === 'image') {
             player = `
                 <div class="player">                                     
                     <img
                         src="${this._media.view}"
                         alt="${this._media.title}"                        
-                    />
+                    >
                     <h3>${this._media.title}</h3>
-                    <button class="close-btn">&times;</button>
-                    <button class="prev-btn">&#10094;</button>
-                    <button class="next-btn">&#10095;</button>                    
+                    <button name="close" class="close-btn" type="button">&times;</button>
+                    <button name="previous" class="prev-btn" type="button">&#10094;</button>
+                    <button name="next" class="next-btn" type="button">&#10095;</button>                    
                 </div>
             `;
         } else {
             player = `
                 <div class="player"> 
                     <video controls>
-                        <source src="${this._media.view}">                        
+                        <source src="${this._media.view}" 
+                        title="${this._media.title}"
+                    >                        
                     </video> 
                     <h3>${this._media.title}</h3>
-                    <button class="close-btn">&times;</button>
-                    <button class="prev-btn">&#10094;</button>
-                    <button class="next-btn">&#10095;</button>                   
+                    <button name="close" class="close-btn" type="button">&times;</button>
+                    <button name="previous" class="prev-btn" type="button">&#10094;</button>
+                    <button name="next" class="next-btn" type="button">&#10095;</button>                   
                 </div>
             `;
-        }
-        
+        }        
+
         this.$wrapper.innerHTML = player;
 
         this.$modalWrapper.classList.add('modal-on');
