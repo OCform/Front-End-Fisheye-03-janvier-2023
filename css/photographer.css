@@ -89,7 +89,7 @@ h1 {
     margin: 0 auto;
 }
 
-.medias-wrapper .cartouche {
+.cartouche {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -108,7 +108,7 @@ h1 {
     margin: auto;
 }
 
-.medias-wrapper .cartouche span {
+.cartouche span {
     display: flex;
     gap: 5px;
 }
@@ -152,9 +152,9 @@ h1 {
     gap: 5px;
 }
 
-/* .likes {
-    margin-right: 5px;         
-} */
+.liked {
+    color: #FF1C1C;         
+}
 
 .media-card-wrapper span .fa-heart  {
     z-index: 1000;    

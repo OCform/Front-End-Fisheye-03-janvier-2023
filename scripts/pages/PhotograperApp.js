@@ -2,7 +2,9 @@ class PhotograperApp {
     constructor() {
         this.$photographerHeader = document.querySelector('.photographer-header');
         this.$mediasWrapper = document.querySelector('.medias-wrapper');
-        this.$label = document.querySelector('.medias-wrapper .cartouche');
+        this.$label = document.createElement('div');
+        this.$label.classList.add('cartouche');
+        this.$mediasWrapper.appendChild(this.$label);
 
         this.$totalLikes = 0;
     }
@@ -32,6 +34,9 @@ class PhotograperApp {
         
         // Ici je récupère les medias de mon fichier photographers.json
         const mediasData = [await(await fetch('/data/photographers.json')).json()][0].media;
+
+        const Sorter = new SorterForm(mediasData);
+        Sorter.render();
         
         mediasData
             // Ici, je transforme mon tableau de données en un tableau de classe Factory
@@ -39,17 +44,18 @@ class PhotograperApp {
             .forEach(media => {                
                 if(media.photographerId === this.idPhotographer) {                      
                     this.$totalLikes = this.$totalLikes + media.likes;                                                   
-                    const Template = mediaCardWithPlayer(new MediaCard(media, this.WishlistSubject));
+                    const Template = mediaCardWithPlayer(new MediaCard(media));
                     this.$mediasWrapper.appendChild(
                         Template.createMediaCard()
                     );
                 }
             });
+            console.log(document.querySelector('.cartouche > span > div'));
             const likes = `
                 <span><div>${this.$totalLikes}</div> <em class="fa fa-heart" aria-hidden="true"></em></span>
                 <div>${this.price}€/jour</div>
             `;
-        this.$label.innerHTML = likes;
+        this.$label.innerHTML = likes;        
     }
 }
 
