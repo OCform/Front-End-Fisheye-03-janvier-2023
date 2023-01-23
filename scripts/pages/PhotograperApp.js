@@ -2,11 +2,11 @@ class PhotograperApp {
     constructor() {
         this.$photographerHeader = document.querySelector('.photographer-header');
         this.$mediasWrapper = document.querySelector('.medias-wrapper');
-        this.$label = document.createElement('div');
-        this.$label.classList.add('cartouche');
-        this.$mediasWrapper.appendChild(this.$label);
-
-        this.$totalLikes = 0;
+        this.$price = document.querySelector('.price');
+        this.$TotaLL = document.querySelector('.total-likes');
+        
+        this.$totalLikes = [];
+        this.$sumLikes = 0;
     }
 
     async main() {
@@ -42,20 +42,20 @@ class PhotograperApp {
             // Ici, je transforme mon tableau de données en un tableau de classe Factory
             .map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {                
-                if(media.photographerId === this.idPhotographer) {                      
-                    this.$totalLikes = this.$totalLikes + media.likes;                                                   
+                if(media.photographerId === this.idPhotographer) { 
+                    localStorage.clear();                                         
+                    this.$totalLikes.push(media.likes);
+                    this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, 0);                                                                     
                     const Template = mediaCardWithPlayer(new MediaCard(media));
                     this.$mediasWrapper.appendChild(
                         Template.createMediaCard()
                     );
                 }
             });
-            console.log(document.querySelector('.cartouche > span > div'));
-            const likes = `
-                <span><div>${this.$totalLikes}</div> <em class="fa fa-heart" aria-hidden="true"></em></span>
-                <div>${this.price}€/jour</div>
-            `;
-        this.$label.innerHTML = likes;        
+        this.$price.innerHTML = `${this.price}€/jour`;
+        this.$TotaLL.innerHTML = this.$sumLikes;        
+        
+        localStorage.setItem('TotalL', this.$sumLikes);            
     }
 }
 

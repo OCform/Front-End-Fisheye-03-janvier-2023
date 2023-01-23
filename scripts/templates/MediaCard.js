@@ -8,7 +8,8 @@ class MediaCard {
 
         this.$img = document.createElement('img');
         this.$video = document.createElement('video');
-        
+
+        this.$TotaLL = document.querySelector('.total-likes');        
     }
     
     get media() {
@@ -62,23 +63,18 @@ class MediaCard {
         faHeart.classList.add('fa-heart');
         faHeart.setAttribute('aria-hidden', 'true');
         
-        titleLikesCenter.addEventListener('click', () => { 
-            const TotalLikes = document.querySelector("body > main > div.medias-wrapper > div.cartouche > span > div");
-            console.log(TotalLikes);
-            console.log(likes.innerHTML);
-            console.log(`${this._media.likes}`);
-            localStorage.clear();                    
+        titleLikesCenter.addEventListener('click', () => {
             if (likes.innerHTML == `${this._media.likes}`) {
                 likes.innerHTML = this._media.likes + 1;
                 this._likes = this._likes + 1;
-                TotalLikes.innerHTML = parseInt(TotalLikes.innerHTML) + 1;
-                localStorage.setItem('TotalL', parseInt(TotalLikes.innerHTML));             
+                this.$TotaLL.innerHTML = parseInt(this.$TotaLL.innerHTML) + 1;
+                localStorage.setItem('TotalL', parseInt(this.$TotaLL.innerHTML));             
                 span.classList.add('liked');
             } else {
                 likes.innerHTML = this._media.likes;
                 this._likes = this._likes - 1;
-                TotalLikes.innerHTML = parseInt(TotalLikes.innerHTML) - 1;
-                localStorage.setItem('TotalL', parseInt(TotalLikes.innerHTML));
+                this.$TotaLL.innerHTML = parseInt(this.$TotaLL.innerHTML) - 1;
+                localStorage.setItem('TotalL', parseInt(this.$TotaLL.innerHTML));
                 span.classList.remove('liked');
             }            
         });

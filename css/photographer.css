@@ -264,3 +264,14 @@ h1 {
     border: 1px solid #901C1C;
     color: #FFF;
 }
+
+/* Sort */
+form.sorter-form {
+    height: 50px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    max-width: 1240px;
+}
