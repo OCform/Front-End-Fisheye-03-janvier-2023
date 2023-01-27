@@ -3,13 +3,17 @@ class SorterForm {
         this.Medias = Medias;
         
         this.$wrapper = document.createElement('div');
+        this.$wrapper.classList.add('custom-select');
         this.$sorterFormWrapper = document.querySelector('.sorter-form-wrapper');
+        
+        this.$option = document.querySelector('#sorter-select option');
+        
         this.$mediasWrapper = document.querySelector('.medias-wrapper');
 
         this.$TotaLL = document.querySelector('.total-likes');
         
         this.params = new URLSearchParams(document.location.search);
-        this.idPhotographer = parseInt(this.params.get("idPhotographer"));
+        this.idPhotographer = parseInt(this.params.get('idPhotographer'));
         
         this.$totalLikes = [];
         this.$sumLikes = '';
@@ -29,9 +33,8 @@ class SorterForm {
             .map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {                
                 if(media.photographerId === this.idPhotographer) {
-                    // localStorage.clear();
                     this.$totalLikes.push(media.likes);
-                    this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, 0); 
+                    this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, this.$sumLikes); 
                     const Template = mediaCardWithPlayer(new MediaCard(media));
                     this.$mediasWrapper.appendChild(
                         Template.createMediaCard()
@@ -43,9 +46,8 @@ class SorterForm {
             this.Medias.map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {                
                 if(media.photographerId === this.idPhotographer) {
-                    // localStorage.clear(); 
                     this.$totalLikes.push(media.likes);
-                    this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, 0);                   
+                    this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, this.$sumLikes);                   
                     const Template = mediaCardWithPlayer(new MediaCard(media));
                     this.$mediasWrapper.appendChild(
                         Template.createMediaCard()
@@ -55,41 +57,66 @@ class SorterForm {
             });
         }    
     }
+    
+    onUpDownChevron() {
+        this.$wrapper
+            .querySelector('.chevron')
+            .addEventListener('click', (e) => {
+                const sorter = e.target.value;
+                this.sorterMedias(sorter);
+                this.$wrapper
+                    .querySelector('.chevron')
+                    .classList.toggle('up');
+            });
+
+        this.$wrapper
+            .querySelector('form #sorter-select')
+            .addEventListener('click', () => {
+                this.$wrapper
+                    .querySelector('.chevron')
+                    .classList.toggle('up');
+            });
+
+        this.$wrapper
+            .querySelectorAll('form #sorter-select option')
+            .forEach(element => {
+                element.addEventListener('click', () => {
+                this.$wrapper
+                    .querySelector('.chevron')
+                    .classList.toggle('up');
+                });
+            });
+            
+    }
 
     onChangeSorter() {
         this.$wrapper
             .querySelector('form')
             .addEventListener('change', e => {
                 const sorter = e.target.value;
-                this.sorterMedias(sorter);                
-            });
+                this.sorterMedias(sorter);
+            });            
     }
 
     clearMediasWrapper() {
-        this.$mediasWrapper.innerHTML = "";
-        console.log(localStorage.getItem('TotalL'));
-        // if((this.$sumLikes > 0) && (parseInt(this.$TotaLL.innerHTML) < this.$sumLikes)) {
-        //     this.$TotaLL.innerHTML = `${this.$sumLikes}`;
-        // }        
-        // localStorage.clear();
+        this.$mediasWrapper.innerHTML = '';        
     }
 
     render() {
-        this.$TotaLL.innerHTML = '';
-        
-
-        const sorterForm = `
+        const sorterForm = `            
             <form action="#" method="POST" class="sorter-form">
                 <label for="sorter-select">Trier par  </label>
                 <select name="sorter-select" id="sorter-select">
-                    <option value="POPULARITY">Popularité</option>
+                    <option value="POPULARITY" selected>Popularité &#8192 &#8192 &#8192&#8192</option>                    
                     <option value="DATE">Date</option>
                     <option value="TITLE">Titre</option>
-                </select>
+                </select>                                
             </form>
+            <div class="chevron">&#x3e;</div>
         `;
         
-        this.$wrapper.innerHTML = sorterForm;        
+        this.$wrapper.innerHTML = sorterForm;
+        this.onUpDownChevron();
         this.onChangeSorter();
 
         this.$sorterFormWrapper.appendChild(this.$wrapper);        

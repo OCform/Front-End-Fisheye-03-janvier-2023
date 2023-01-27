@@ -50,7 +50,7 @@
 			"id": 195,
 			"city": "Berlin",
 			"country": "Germany",
-			"tagline": "Toujours à la recherche de LA photo",
+			"tagline": "Toujours à la recherche de la photo",
 			"price": 300,
 			"portrait": "MarcelNikolic.jpg"
 		}
@@ -390,7 +390,7 @@
 			"likes": 142,
 			"date": "2019-08-23",
 			"price": 60
-		  },
+		},
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -413,7 +413,7 @@
 		{
 			"id": 2523434,
 			"photographerId": 195,
-			"title": "Senset on Canals, Venice",
+			"title": "Sunset on Canals, Venice",
 			"image": "Travel_SunsetonCanals.jpg",
 			"likes": 53,
 			"date": "2019-05-06",

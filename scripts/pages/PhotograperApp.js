@@ -25,7 +25,7 @@ class PhotograperApp {
                 <div class="photographer-location">${this.city}, ${this.country}</div>
                 <div class="photographer-tagline">${this.tagline}</div>
             </div>
-            <button type="button" class="contact-button" onclick="displayModal()">Contactez-moi</button>
+            <button type="button" class="contact-btn">Contactez-moi</button>
             <div class="photographer-portrait">
                 <img src="${this.portrait}" alt="${this.name}"/>
             </div>
@@ -35,6 +35,9 @@ class PhotograperApp {
         // Ici je récupère les medias de mon fichier photographers.json
         const mediasData = [await(await fetch('/data/photographers.json')).json()][0].media;
 
+        const Contact = new ContactForm();
+        Contact.render();
+
         const Sorter = new SorterForm(mediasData);
         Sorter.render();
         
@@ -42,8 +45,7 @@ class PhotograperApp {
             // Ici, je transforme mon tableau de données en un tableau de classe Factory
             .map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {                
-                if(media.photographerId === this.idPhotographer) { 
-                    localStorage.clear();                                         
+                if(media.photographerId === this.idPhotographer) {
                     this.$totalLikes.push(media.likes);
                     this.$sumLikes = this.$totalLikes.reduce((partialSum, a) => partialSum + a, 0);                                                                     
                     const Template = mediaCardWithPlayer(new MediaCard(media));
@@ -52,10 +54,9 @@ class PhotograperApp {
                     );
                 }
             });
+
         this.$price.innerHTML = `${this.price}€/jour`;
-        this.$TotaLL.innerHTML = this.$sumLikes;        
-        
-        localStorage.setItem('TotalL', this.$sumLikes);            
+        this.$TotaLL.innerHTML = this.$sumLikes;
     }
 }
 

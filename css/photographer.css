@@ -39,7 +39,10 @@ h1 {
 
 /* Photographer-header */
 .photographer-header {
-    background-color: #FAFAFA;
+    border-radius: 8px;
+    box-shadow: 4px 5px 5px #333;
+    border: 1px solid #e9e9e9;
+    background-color: #fafafa;
     height: 300px;
     margin: auto;
     display: flex;
@@ -57,17 +60,128 @@ h1 {
     margin: auto 50px;
 }
 
-.contact-button {
+/* Modal Contact */
+.contact-btn {
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 11px;
     width: 170px;
-    height: 70px;
+    height: 69px;
     border: none;
     background-color: #901C1C;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+}
+
+.contact-btn:hover {
+    background-color: #D3573C;    
+    color: #000;    
+}
+
+.modal-contact {
+    display: none;
+}
+
+.modal-on {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2000px/*100vh*/;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, .7);
+    overflow: hidden;
+}
+
+.modal-contact header {
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+}
+
+body > div > div > form > header > h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000;
+    font-size: 64px;
+    font-weight: normal;
+    text-align: left;
+    margin: 0;   
+    padding: 0; 
+}
+
+body > div > div > form > header > button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: transparent;
+    border: none;
+}
+
+.modal-contact form {
+    position: absolute;
+    left: 50%;
+    top: 27%;
+    transform: translate(-50%, -50%);
+    background-color: #DB8876;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+    padding: 35px;
+    border-radius: 8px;
+    min-width: 669px;
+}
+
+body > div > div > form > div:nth-child(2) {
+    margin-top: 100px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    color: #312E2E;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
+    height: 68px;
+    border: none;
+    font-size: 30px;
+    border-radius: 8px;
+}
+
+#message {
+    width: 100%;
+    border: none;
+    font-size: 30px;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 11px;
+    margin-top: 12px;
+    width: 170px;
+    height: 69px;
+    background-color: #901C1C;
+    border: none;
+    border-radius: 8px;
+    color: #FFF;
+    transition: .4s;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #FFF;    
+    color: #901C1C;    
 }
 
 .photographer-portrait img {
@@ -76,7 +190,7 @@ h1 {
     width: 200px;
     object-fit: cover;
     box-shadow: 4px 5px 5px #333;
-}
+} 
 
 /* Media Card */
 .medias-wrapper {
@@ -162,20 +276,10 @@ h1 {
 }
 
 /* Player Modal */
-.modal-on {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 1880px;
-    width: 100vw;
-    background-color: rgba(255, 255, 255, .7);
-    overflow: hidden;
-}
-
 .player-wrapper {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 28%;
     transform: translate(-50%, -50%);
 }
 
@@ -266,8 +370,22 @@ h1 {
 }
 
 /* Sort */
+.sorter-form-wrapper {
+    position: relative;    
+    height: 100px;
+    width: 1240px;
+    margin: auto;
+}
+
+.custom-select {    
+    height: 100px;
+    width: 1240px;
+    margin: auto;
+}
+
 form.sorter-form {
-    height: 50px;
+    position: relative;
+    height: 100px;   
     margin: auto;
     display: flex;
     justify-content: flex-start;
@@ -275,3 +393,48 @@ form.sorter-form {
     gap: 20px;
     max-width: 1240px;
 }
+
+body > main > div.forms-wrapper > div > div > form > label {
+    font-size: 25px;
+}
+
+select#sorter-select {   
+    width: 170px;
+    height: 69px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+    padding: .5rem .7rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background: #901C1C;
+    color: #FFF;    
+    border: none;
+}
+
+select#sorter-select option {
+    text-decoration: underline;
+    color: #FFF;
+    width: 100%;
+}
+
+.chevron {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 34px;
+    left: 250px;
+    cursor: pointer;
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    color: #FFF;
+    background-color: #901C1C;   
+    text-align: center;
+    transform: rotate(90deg);        
+}
+
+.chevron.up {
+    transform: rotate(270deg);
+}
+
+

@@ -5,7 +5,7 @@ class PlayerModal {
         this.$wrapper = document.createElement('div');
         this.$wrapper.classList.add('player-wrapper');
 
-        this.$modalWrapper = document.querySelector('.modal');
+        this.$modalWrapper = document.querySelector('.modal-lightbox');
 
         this.$media = document.querySelectorAll(".medias-wrapper > .media-card-wrapper > .media.center > .display");
         this.currentIndex= 1;
@@ -69,7 +69,14 @@ class PlayerModal {
 
     createPlayer() {
         console.log(this.mediaSrc.filter(item => (this._media.id === item.id)));
+        console.log(this.mediaSrc.find(item => (this._media.id === item.id)));
         
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
         let player;
                 
         if(this._media.type === 'image') {

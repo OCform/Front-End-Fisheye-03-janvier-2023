@@ -37,7 +37,7 @@ class MediaCard {
             this.$video.classList.add('display');
             this.$video.setAttribute('id', `${this._media.id}`);
             this.$video.setAttribute('src', `${this.media.view}`);
-            this.$video.setAttribute('alt', `${this._media.title}`);
+            this.$video.setAttribute('title', `${this._media.title}`);
         }
 
         const titleLikesCenter = document.createElement('div');
