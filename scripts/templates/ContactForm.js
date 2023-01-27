@@ -237,7 +237,7 @@ class ContactForm {
                     if(isBetween(messageInputValue.length, min, max)) {
                         document.querySelector("#message").style.border = '5px solid red';
                     } else {
-                        document.querySelector("#message").style.border = '5px solid green';
+                        document.querySelector("#firstname").style.border = '5px solid green';
                         valid = true;
                     }
                     return valid;
