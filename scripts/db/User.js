@@ -55,6 +55,7 @@ class User {
                 message
             });
             console.log(user);
+            localStorage.clear();
         }
 
         // Sinon, ça veut dire que la classe n'a pas été instancié.

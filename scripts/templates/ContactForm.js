@@ -59,93 +59,11 @@ class ContactForm {
             });
     }
 
-    // checkDataValite() { 
-    //     console.log('checkDataValite()');
-
-        // // check if a field isn't empty
-        // const isRequired = value => value === '' ? false : true;
-
-        // // check numbers characters between min and max
-        // const isBetween = (length, min, max) => length < min || length > max ? false : true;
-
-        // // check if a string has numbers
-        // const isNumber = (num) => {
-        //     const re = (/\d+/gm);
-        //     return re.test(num);
-        // };
-
-        // // check if the string has special characters
-        // const isCharSpe = (specialChar) => {
-        //     const re = (/[^a-zA-Z0-9 ]+$/gm);
-        //     return re.test(specialChar);
-        // };
-
-        // // check if the mail has valid
-        // const isEmailValid = (email) => {
-        //     const re = (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,6}))$/);
-        //     return re.test(email);
-        // };
-
-        // const checkFirstName = () => {                     
-        //     let valid = false;
-        //     const min = 3, max = 25;
-        //     const fname = firstNameInputValue.value.trim();
-
-        //     if (!isRequired(fname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';                        
-        //     } else if (isNumber(fname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else if (isCharSpe(fname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else if (!isBetween(fname.length, min, max)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else {
-        //         document.querySelector("#firstname").style.border = '2px solid transparent';
-        //         valid = true;
-        //     }
-        //     return valid;
-        // };
-
-        // const checkLastName = () => {                     
-        //     let valid = false;
-        //     const min = 3, max = 25;
-        //     const lname = lastNameInputValue.value.trim();
-
-        //     if (!isRequired(lname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';                        
-        //     } else if (isNumber(lname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else if (isCharSpe(lname)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else if (!isBetween(lname.length, min, max)) {
-        //         document.querySelector("#firstname").style.border = '2px solid red';
-        //     } else {
-        //         document.querySelector("#firstname").style.border = '2px solid transparent';
-        //         valid = true;
-        //     }
-        //     return valid;
-        // };
-    // }
-
     onSubmitForm() {
-        // const debounce = (fn, delay = 500) => {
-        //     let timeoutId;
-        //     return (...args) => {
-        //         // cancel the previous timer
-        //         if (timeoutId) {
-        //             clearTimeout(timeoutId);
-        //         }
-        //         // setup a new timer
-        //         timeoutId = setTimeout(() => {
-        //             fn.apply(null, args);
-        //         }, delay);
-        //     };
-        // };
-        
         this.$wrapper
             .querySelector('form')
             .addEventListener('submit', (e) => {
-                e.preventDefault();
+                e.preventDefault();              
 
                 const firstNameInputValue = this
                     .$wrapper
@@ -215,6 +133,7 @@ class ContactForm {
                     }
                     return valid;
                 };
+                
                 const checkEmail = () => {
                     let valid = false;
                     const email = emailInputValue;
@@ -242,23 +161,11 @@ class ContactForm {
                     }
                     return valid;
                 };
-
-                switch (e.target.id) {
-                    case 'firstname':
-                    checkFirstName();
-                    break;
-                    case 'lastname':
-                    checkLastName();
-                    break;
-                    case 'email':
-                    checkEmail();
-                    break;      
-                    case 'message':
-                    checkMessage();
-                    break;            
-                }
                 
-                if(checkFirstName() && checkLastName() && checkEmail() && checkMessage()) {
+                if(checkFirstName() && 
+                    checkLastName() && 
+                    checkEmail() && 
+                    checkMessage()) {
                     const user = new User({
                         firstName: firstNameInputValue,
                         lastName: lastNameInputValue,
@@ -270,39 +177,7 @@ class ContactForm {
                         this.$modalWrapper.innerHTML = "";
                     }
                 }                               
-            });
-
-        // const debounce = (fn, delay = 500) => {
-        //     let timeoutId;
-        //     return (...args) => {
-        //         // cancel the previous timer
-        //         if (timeoutId) {
-        //             clearTimeout(timeoutId);
-        //         }
-        //         // setup a new timer
-        //         timeoutId = setTimeout(() => {
-        //             fn.apply(null, args);
-        //         }, delay);
-        //     };
-        // };
-        // this.$wrapper
-        //     .querySelector('form')
-        //     .addEventListener('input', debounce((e) => {
-        //         switch (e.target.id) {
-        //             case 'firstname':
-        //             checkFirstName();
-        //             break;
-        //             case 'lastname':
-        //             checkLastName();
-        //             break;
-        //             case 'email':
-        //             checkEmail();
-        //             break;      
-        //             case 'message':
-        //             checkMessage();
-        //             break;            
-        //         }
-        //     }));
+        });
     }
 
     shouldDisplayForm() {
