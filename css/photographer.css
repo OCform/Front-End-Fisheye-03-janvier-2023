@@ -29,7 +29,9 @@ header {
 
 h1 {    
     color: #D3573C;
-    font-size: 36px;
+    font-size: 58px;
+    margin: 0;
+    padding: 0;
 }
 
 .logo {
@@ -52,7 +54,12 @@ h1 {
 }
 
 .photographer-location {
+    font-size: 20px;
     color: #901C1C;
+}
+
+.photographer-tagline {
+    font-size: 20px;
 }
 
 .photographer-portrait, 
@@ -72,6 +79,7 @@ h1 {
     background-color: #901C1C;
     border-radius: 8px;
     cursor: pointer;
+    box-shadow: 4px 5px 5px #333;
 }
 
 .contact-btn:hover {
@@ -177,6 +185,7 @@ form input {
     color: #FFF;
     transition: .4s;
     cursor: pointer;
+    box-shadow: 4px 5px 5px #333;
 }
 
 .submit-btn:hover {
@@ -271,7 +280,6 @@ form input {
 }
 
 .media-card-wrapper span .fa-heart  {
-    z-index: 1000;    
     cursor: pointer;
 }
 
@@ -295,6 +303,7 @@ form input {
     border-radius: 16px;
     box-shadow: 4px 5px 5px #333;
 }
+
 .player h3 {
     color: #901C1C;
     font-size: 36px;
@@ -326,14 +335,15 @@ form input {
 .prev-btn {
     position: fixed;
     bottom: 50%;
-    top: 50%;
+    top: 43%;
     left: -50px;
     right: 100%;
     transform: translateY(-50%);
     background-color: transparent;
     color: #901C1C;
     border: 1px solid transparent;
-    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     height: 50px;
     width: 50px;
     transition: .4s;
@@ -345,14 +355,15 @@ form input {
 .next-btn {    
     position: fixed;
     bottom: 50%;
-    top: 50%;
+    top: 43%;
     left: 100%;
     right: 0;
     transform: translateY(-50%);
     background-color: transparent;
     color: #901C1C;
     border: 1px solid transparent;
-    border-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     height: 50px;
     width: 50px;
     transition: .4s;
@@ -390,51 +401,53 @@ form.sorter-form {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    gap: 20px;
+    gap: 32px;
     max-width: 1240px;
 }
 
 body > main > div.forms-wrapper > div > div > form > label {
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: 900;
 }
 
-select#sorter-select {   
+select#sorter-select {
     width: 170px;
     height: 69px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+    box-shadow: 8px 6px 5px #333;
     padding: .5rem .7rem;
     font-size: 1.3rem;
     font-weight: bold;
-    background: #901C1C;
-    color: #FFF;    
+    background: #901C1C; 
+    color: #FFF;     
     border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-select#sorter-select option {
-    text-decoration: underline;
+select#sorter-select option {  
+    font-size: 21px;
+    font-weight: bold;  
     color: #FFF;
-    width: 100%;
 }
 
 .chevron {
     position: absolute;
     right: 0;
     bottom: 0;
-    top: 34px;
-    left: 250px;
-    cursor: pointer;
-    font-size: 30px;
-    width: 35px;
-    height: 35px;
+    top: 43px;
+    left: 265px;    
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     color: #FFF;
-    background-color: #901C1C;   
+    background: #901C1C;   
     text-align: center;
-    transform: rotate(90deg);        
+    transform: rotate(0deg);
+    font-size: 12px;
 }
 
 .chevron.up {
-    transform: rotate(270deg);
+    transform: rotate(180deg);
 }
 
 

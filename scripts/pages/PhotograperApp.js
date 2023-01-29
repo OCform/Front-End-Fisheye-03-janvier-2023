@@ -22,8 +22,8 @@ class PhotograperApp {
         const photographerHeader = `
             <div class="photographer-cartridge">
                 <h1><div class="photographer-name">${this.name}</div></h1>
-                <div class="photographer-location">${this.city}, ${this.country}</div>
-                <div class="photographer-tagline">${this.tagline}</div>
+                <p class="photographer-location">${this.city}, ${this.country}</p>
+                <p class="photographer-tagline">${this.tagline}</p>
             </div>
             <button type="button" class="contact-btn">Contactez-moi</button>
             <div class="photographer-portrait">

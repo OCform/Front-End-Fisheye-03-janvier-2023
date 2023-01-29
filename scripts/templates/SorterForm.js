@@ -60,38 +60,26 @@ class SorterForm {
     
     onUpDownChevron() {
         this.$wrapper
-            .querySelector('.chevron')
-            .addEventListener('click', (e) => {
-                const sorter = e.target.value;
-                this.sorterMedias(sorter);
-                this.$wrapper
-                    .querySelector('.chevron')
-                    .classList.toggle('up');
-            });
-
-        this.$wrapper
-            .querySelector('form #sorter-select')
+            .querySelector('#sorter-select')
             .addEventListener('click', () => {
                 this.$wrapper
                     .querySelector('.chevron')
                     .classList.toggle('up');
-            });
+        });
 
-        this.$wrapper
-            .querySelectorAll('form #sorter-select option')
-            .forEach(element => {
-                element.addEventListener('click', () => {
-                this.$wrapper
-                    .querySelector('.chevron')
-                    .classList.toggle('up');
-                });
-            });
-            
+        if(this.$wrapper
+            .querySelector('.chevron')
+            .classList
+            .contains('up')) {
+            this.$wrapper
+                .querySelector('.chevron')
+                .classList.toggle('up');            
+        }                  
     }
 
     onChangeSorter() {
         this.$wrapper
-            .querySelector('form')
+            .querySelector('#sorter-select')
             .addEventListener('change', e => {
                 const sorter = e.target.value;
                 this.sorterMedias(sorter);
@@ -107,17 +95,17 @@ class SorterForm {
             <form action="#" method="POST" class="sorter-form">
                 <label for="sorter-select">Trier par  </label>
                 <select name="sorter-select" id="sorter-select">
-                    <option value="POPULARITY" selected>Popularité &#8192 &#8192 &#8192&#8192</option>                    
+                    <option value="POPULARITY" selected>Popularité&#8192&#8192&#8192&#8192 &#8192</option>                    
                     <option value="DATE">Date</option>
                     <option value="TITLE">Titre</option>
                 </select>                                
             </form>
-            <div class="chevron">&#x3e;</div>
+            <div class="chevron"><em class="fa fa-chevron-down"></em></div>
         `;
         
-        this.$wrapper.innerHTML = sorterForm;
-        this.onUpDownChevron();
+        this.$wrapper.innerHTML = sorterForm;        
         this.onChangeSorter();
+        this.onUpDownChevron();
 
         this.$sorterFormWrapper.appendChild(this.$wrapper);        
     }

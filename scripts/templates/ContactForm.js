@@ -113,9 +113,9 @@ class ContactForm {
                     const min = 3, max = 25;
 
                     if(isNumber(firstNameInputValue) || isBetween(firstNameInputValue.length, min, max) || isCharSpe(firstNameInputValue)) {
-                        document.querySelector("#firstname").style.border = '5px solid red';
+                        if(document.querySelector("#firstname")) document.querySelector("#firstname").style.border = '5px solid red';
                     } else {
-                        document.querySelector("#firstname").style.border = '5px solid green';
+                        if(document.querySelector("#firstname")) document.querySelector("#firstname").style.border = '5px solid green';
                         valid = true;
                     }
                     return valid;
@@ -133,7 +133,7 @@ class ContactForm {
                     }
                     return valid;
                 };
-                
+
                 const checkEmail = () => {
                     let valid = false;
                     const email = emailInputValue;
@@ -161,11 +161,28 @@ class ContactForm {
                     }
                     return valid;
                 };
+
+                if((checkFirstName() == '') && 
+                    (checkLastName() == '') && 
+                    (checkEmail() == '') && 
+                    (checkMessage() == '')) {
+                        const user = new User({
+                            firstName: 'Alfred',
+                            lastName: 'DURAND',
+                            email: 'alfred.durand@labanque.fr',
+                            message: 'Hello World! '
+                        });
+                        if (user.user) {
+                            this.$modalWrapper.classList.remove('modal-on');
+                            this.$modalWrapper.innerHTML = "";
+                        }
+                    console.log('Empty contact form!');
+                }
                 
                 if(checkFirstName() && 
                     checkLastName() && 
                     checkEmail() && 
-                    checkMessage()) {
+                    checkMessage()) {                        
                     const user = new User({
                         firstName: firstNameInputValue,
                         lastName: lastNameInputValue,
@@ -194,6 +211,12 @@ class ContactForm {
             left: 0,
             behavior: 'smooth'
         });
+
+        // <div class="form-group">
+        //     <label for=""></label>
+        //     <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+        //     <small id="emailHelpId" class="form-text text-muted">Help text</small>
+        // </div>
 
         const form = ` 
             <form action="#" method="POST" id="contact">
