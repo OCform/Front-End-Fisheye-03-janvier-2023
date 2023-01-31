@@ -292,7 +292,7 @@ form input {
 .player-wrapper {
     position: absolute;
     left: 50%;
-    top: 28%;
+    top: 29%;
     transform: translate(-50%, -50%);
 }
 
@@ -318,22 +318,22 @@ form input {
 .close-btn {    
     position: absolute;
     bottom: 100%;
-    top: -50px;
-    left: 1075px;
-    right: -50px;
+    top: -60px;
+    left: 1080px;
+    right: 0;
     transform: translateX(-50%);
     background-color: transparent;
     color: #901C1C;
     border: 1px solid transparent;
     border-radius: 8px;
-    height: 50px;
-    width: 50px;        
+    height: 60px;
+    width: 60px;        
     transition: .4s;
     cursor: pointer;
     display: flex;
     align-content: center;
     align-items: center;
-    font-size: 60px;    
+    font-size: 70px;    
     padding: 8px;
 }
 
@@ -349,11 +349,11 @@ form input {
     border: 1px solid transparent;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    height: 50px;
+    height: 100px;
     width: 50px;
     transition: .4s;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 50px;
     padding-bottom: 6px;
 }
 
@@ -369,11 +369,11 @@ form input {
     border: 1px solid transparent;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
-    height: 50px;
+    height: 100px;
     width: 50px;
     transition: .4s;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 50px;
     padding-bottom: 6px;
 }
 
@@ -436,8 +436,7 @@ select#sorter-select option {
     color: #FFF;
 }
 
-.chevron {
-    pointer-events: none;
+.chevron {    
     position: absolute;
     right: 0;
     bottom: 0;
@@ -451,6 +450,8 @@ select#sorter-select option {
     text-align: center;
     transform: rotate(0deg);
     font-size: 20px;
+    cursor: pointer;
+    pointer-events: none;
 }
 
 .chevron.up {
