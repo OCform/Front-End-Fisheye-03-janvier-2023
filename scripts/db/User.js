@@ -12,7 +12,7 @@ class User {
             this._message = data.message;
 
             // Je les sauvegarde en Local Storage
-            this.saveToLocalStorage();
+            // this.saveToLocalStorage();
 
             // Je "lock" l'objet
             User.instance = this;
@@ -72,10 +72,11 @@ class User {
         };  
     }
 
-    saveToLocalStorage() {
-        localStorage.setItem('firstName', this._firstName);
-        localStorage.setItem('lastName', this._lastName);
-        localStorage.setItem('email', this._email);
-        localStorage.setItem('message', this._message);
-    }
+    // saveToLocalStorage() {
+    //     localStorage.setItem('firstName', this._firstName);
+    //     localStorage.setItem('lastName', this._lastName);
+    //     localStorage.setItem('email', this._email);
+    //     localStorage.setItem('message', this._message);
+    // }
+
 }

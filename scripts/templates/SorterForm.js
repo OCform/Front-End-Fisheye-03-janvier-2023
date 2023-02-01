@@ -10,7 +10,7 @@ class SorterForm {
         
         this.$mediasWrapper = document.querySelector('.medias-wrapper');
 
-        this.$TotaLL = document.querySelector('.total-likes');
+        this.$totalLikes = document.querySelector('.total-likes');
         
         this.params = new URLSearchParams(document.location.search);
         this.idPhotographer = parseInt(this.params.get('idPhotographer'));
@@ -29,7 +29,7 @@ class SorterForm {
             const SortedMedias = sortedData.data;
             
             SortedMedias
-            // Ici, je transforme mon tableau de données en un tableau de classe Factory
+            // Ici, je transforme mon tableau de données en un tableau de Class Factory
             .map(media => new PhotographerFactory(media, 'media'))
             .forEach(media => {                
                 if(media.photographerId === this.idPhotographer) {
@@ -95,7 +95,7 @@ class SorterForm {
             <form action="#" method="POST" class="sorter-form">
                 <label for="sorter-select">Trier par  </label>
                 <select name="sorter-select" id="sorter-select">
-                    <option value="POPULARITY" selected>Popularité&#8192&#8192&#8192&#8192 &#8192</option>                    
+                    <option value="POPULARITY" selected>Popularité &#8192&#8192&#8192&#8192&#8192 </option>                    
                     <option value="DATE">Date</option>
                     <option value="TITLE">Titre</option>
                 </select>                                

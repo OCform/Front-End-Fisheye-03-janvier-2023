@@ -161,23 +161,6 @@ class ContactForm {
                     }
                     return valid;
                 };
-
-                if((checkFirstName() == '') && 
-                    (checkLastName() == '') && 
-                    (checkEmail() == '') && 
-                    (checkMessage() == '')) {
-                        const user = new User({
-                            firstName: 'Alfred',
-                            lastName: 'DURAND',
-                            email: 'alfred.durand@labanque.fr',
-                            message: 'Hello World! '
-                        });
-                        if (user.user) {
-                            this.$modalWrapper.classList.remove('modal-on');
-                            this.$modalWrapper.innerHTML = "";
-                        }
-                    console.log('Empty contact form!');
-                }
                 
                 if(checkFirstName() && 
                     checkLastName() && 
@@ -211,13 +194,7 @@ class ContactForm {
             left: 0,
             behavior: 'smooth'
         });
-
-        // <div class="form-group">
-        //     <label for=""></label>
-        //     <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
-        //     <small id="emailHelpId" class="form-text text-muted">Help text</small>
-        // </div>
-
+        
         const form = ` 
             <form action="#" method="POST" id="contact">
                 <header>
