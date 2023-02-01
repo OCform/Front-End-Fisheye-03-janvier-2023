@@ -54,6 +54,7 @@ class User {
                 email,
                 message
             });
+            console.log('singleton');
             console.log(user);
             localStorage.clear();
         }
