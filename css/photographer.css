@@ -239,7 +239,7 @@ form input {
     margin: auto;
 }
 
-.cartouche span {
+.cartouche div {
     display: flex;
     gap: 5px;
 }
