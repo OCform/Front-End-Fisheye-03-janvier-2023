@@ -12,7 +12,7 @@ class PlayerModal {
         this.mediaSrc = [];
     }
 
-    onSrc() {
+    getSrc() {
         // get medias src
         this.$media.forEach((med, i) => {
             let type = med.tagName === 'IMG' ? 'image' : 'video';         
@@ -87,9 +87,9 @@ class PlayerModal {
                         alt="${this._media.title}"                        
                     >
                     <h3>${this._media.title}</h3>
-                    <button name="close" class="close-btn" type="button">&times;</button>
-                    <button name="previous" class="prev-btn" type="button">&#10094;</button>
-                    <button name="next" class="next-btn" type="button">&#10095;</button>                    
+                    <button name="close" class="close-btn" type="button"><em class="fa fa-xmark" aria-hidden="true"></em></button>
+                    <button name="previous" class="prev-btn" type="button"><em class="fa fa-chevron-left" aria-hidden="true"></em></button>
+                    <button name="next" class="next-btn" type="button"><em class="fa fa-chevron-right" aria-hidden="true"></em></button>                    
                 </div>
             `;
         } else {
@@ -101,9 +101,9 @@ class PlayerModal {
                     >                        
                     </video> 
                     <h3>${this._media.title}</h3>
-                    <button name="close" class="close-btn" type="button">&times;</button>
-                    <button name="previous" class="prev-btn" type="button">&#10094;</button>
-                    <button name="next" class="next-btn" type="button">&#10095;</button>                   
+                    <button name="close" class="close-btn" type="button"><i class="fa fa-xmark" aria-hidden="true"></i></button>
+                    <button name="previous" class="prev-btn" type="button"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+                    <button name="next" class="next-btn" type="button"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>                   
                 </div>
             `;
         }        
@@ -113,7 +113,7 @@ class PlayerModal {
         this.$modalWrapper.classList.add('modal-on');
         this.$modalWrapper.appendChild(this.$wrapper);
 
-        this.onSrc();
+        this.getSrc();
         this.onCloseButton();
         this.onPrevButton();
         this.onNextButton();
