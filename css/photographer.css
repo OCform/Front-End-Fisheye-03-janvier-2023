@@ -283,7 +283,8 @@ form input {
 }
 
 .liked {
-    color: #FF1C1C;         
+    font-size: 18px;
+    color: #00F;         
 }
 
 .media-card-wrapper span .fa-heart  {
